@@ -1,5 +1,7 @@
 package com.sun.utils;
 
+import com.sun.common.ListNode;
+
 import java.util.Date;
 
 public class Logger {
@@ -35,6 +37,22 @@ public class Logger {
             }
             println("");
         }
+    }
+
+    public static void printListNode(ListNode head){
+        if (head == null){
+            return;
+        }
+        System.out.print("List: ");
+        while (head != null){
+            if (head.next != null){
+                System.out.print(head.value + " -> ");
+            }else {
+                System.out.print(head.value);
+            }
+            head = head.next;
+        }
+        System.out.println(" ;");
     }
 
 }

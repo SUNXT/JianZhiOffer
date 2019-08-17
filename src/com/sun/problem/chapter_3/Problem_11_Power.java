@@ -1,4 +1,4 @@
-package com.sun.problem;
+package com.sun.problem.chapter_3;
 
 import com.sun.utils.Logger;
 import com.sun.utils.LoggerFactory;

@@ -39,7 +39,7 @@ public class Logger {
         }
     }
 
-    public static void printListNode(ListNode head){
+    public void printListNode(ListNode head){
         if (head == null){
             return;
         }

@@ -1,6 +1,6 @@
 package com.sun.problem.chapter_5;
 
-import com.sun.common.MinHeap;
+import com.sun.common.MaxHeap;
 import com.sun.sort.QuickSort;
 import com.sun.sort.RandomArrayCreator;
 import com.sun.utils.Logger;
@@ -17,6 +17,7 @@ public class Problem_30_K_Least_Numbers {
         int[] array = RandomArrayCreator.createArray(0, 10, 10);
         logger.printArray(array);
         logger.printArray(solution2(array, 4));
+        logger.printArray(solution1(array, 4));
 //        int[] array = new int[]{53, 17, 78, 9, 45, 65, 87, 23};
 //        logger.printArray(array);
 //        MinHeap heap = new MinHeap(array.length, array);
@@ -77,18 +78,18 @@ public class Problem_30_K_Least_Numbers {
             return array;
         }
         // 构造一个个数为k的最小堆
-//        MinHeap minHeap = new MinHeap(k);
-//        // 遍历数组，同时将每个数与堆的最小值比较，如果比堆的最小值还小，则插入
-//        for (int value: array){
-//            if (!minHeap.isFull()){
-//                minHeap.insert(value);
-//            }else {
-//                if (value >= minHeap.getMin()){
-//                    minHeap.removeMin();
-//                    minHeap.insert(value);
-//                }
-//            }
-//        }
-        return null;
+        MaxHeap maxHeap = new MaxHeap(k);
+        // 遍历数组，同时将每个数与堆的最大值比较，如果比堆的最大值还小，则插入
+        for (int value: array){
+            if (!maxHeap.isFull()){
+                maxHeap.insert(value);
+            }else {
+                if (value <= maxHeap.getTop()){
+                    maxHeap.removeTop();
+                    maxHeap.insert(value);
+                }
+            }
+        }
+        return maxHeap.getHeap();
     }
 }
